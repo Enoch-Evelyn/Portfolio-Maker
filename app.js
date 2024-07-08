@@ -1,7 +1,7 @@
+const fs = require('fs');
 const profileDataArgs = process.argv.slice(2, process.argv.length);
-const title = profileDataArgs[0];
+const nametitle = profileDataArgs[0];
 const github = profileDataArgs[1];
-
 
 
 // const printProfileData = (profileDataArr) => {
@@ -30,13 +30,15 @@ return `
   </head>
 
   <body>
-    <h1>${title}</h1>
+    <h1>${nametitle}</h1>
     <h2><a href="https://github.com/${github}">Github</a></h2>
   </body>
   </html>
 `;
 };
-console.log(title, github);
-console.log(generatePage(title,github));
-
+// the first argument is the file being written, the second one is the data assigned to the file and the 3rd is a callback 
+fs.writeFile('index.html', generatePage(nametitle, github), err => {
+    if (err) throw err;
   
+    console.log('Portfolio complete! Check out index.html to see the output!');
+  });
