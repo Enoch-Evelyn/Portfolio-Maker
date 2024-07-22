@@ -6,24 +6,53 @@ const promptUser = () => {
     {
       type: 'input',
       name: 'name',
-      message: 'What is your name?'
+      message: 'What is your name?',
+      validate: nameInput => {
+        if (nameInput) {
+          return true;
+        } else {
+          console.log('Please enter your name!');
+          return false;
+        }
+    }
+      
     },
     {
         type: 'input',
         name: 'github',
-        message: 'Enter your GitHub Username'
-      },
+        message: 'Enter your GitHub Username',
+        validate: nameInput => {
+            if (nameInput) {
+              return true;
+            } else {
+              console.log('Please enter your name!');
+              return false;
+            }
+        }
+          
+        },
+      
       {
         type: 'input',
         name: 'about',
-        message: 'Provide some information about yourself:'
-      }
+        message: 'Provide some information about yourself:',
+        validate: nameInput => {
+            if (nameInput) {
+              return true;
+            } else {
+              console.log('Please enter your name!');
+              return false;
+            }
+        }
+          
+        }
+      
   ]);
 };
 
 
   
-
+//PorfolioData is a parameter that stores the data from the inquierer prompts 
  const promptProject = portfolioData => {
     console.log(`
         Add a New Project
@@ -33,16 +62,38 @@ const promptUser = () => {
         if(!portfolioData.projects){
             portfolioData.projects = [];
             };
+            //Questions that are capture the data for the portfolio 
         return inquirer.prompt ([
             {
               type: 'input',
               name: 'name',
-              message: 'What is the name of your project?'
+              message: 'What is the name of your project?',
+              validate: nameInput => {
+                if (nameInput) {
+                  return true;
+                } else {
+                  console.log('Please enter your name!');
+                  return false;
+                }
+            }
+              
+            
+
             },
             {
               type: 'input',
               name: 'description',
-              message: 'Provide a description of the project (Required)'
+              message: 'Provide a description of the project (Required)',
+              validate: nameInput => {
+                if (nameInput) {
+                  return true;
+                } else {
+                  console.log('Please enter your name!');
+                  return false;
+                }
+            }
+              
+            
             },
             {
               type: 'checkbox',
