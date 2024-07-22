@@ -1,4 +1,5 @@
- import inquirer from 'inquirer';
+// ctrl+c to exit CLI 
+import inquirer from 'inquirer';
 
 const promptUser = () => {
 
@@ -31,22 +32,30 @@ const promptUser = () => {
         }
           
         },
-      
-      {
-        type: 'input',
-        name: 'about',
-        message: 'Provide some information about yourself:',
-        validate: nameInput => {
-            if (nameInput) {
-              return true;
-            } else {
-              console.log('Please enter your name!');
-              return false;
+        {
+            type: 'confirm',
+            name: 'confirmAbout',
+            message: 'Would you like to enter some information about yourself for an "About" section?',
+            default: true
+          },
+          {
+            
+            type: 'input',
+            name: 'about',
+            message: 'Provide some information about yourself:',
+            //Basically when confirmAbout object is returned as true the message about object will be operated 
+            when: ({ confirmAbout }) => {
+              if (confirmAbout) {
+                return true;
+              } else {
+                return false;
+              }
             }
-        }
-          
-        }
+          },
       
+      
+       
+       
   ]);
 };
 
